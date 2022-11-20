@@ -21,21 +21,21 @@ private:
 			dataV_copy[i] = this->dataQ[i];
 		}
 
-		size_t tmp_itPush = this->itPush;
+		size_t tmp_itPush = this->sizeQR;
 		size_t tmp_itPop = this->itPop;
 
 		delete[] this->dataQ;
 		this->dataQ = dataV_copy;
 		this->sizeQI = Const * newSize;
 		this->sizeQR = newSize;
-		this->itPush = ++tmp_itPush;
+		this->itPush = tmp_itPush;
 		this->itPop = tmp_itPop;
 	};
 
 public:
 
-	Queue() : sizeQI(3) {
-		this->dataQ = new T[3];
+	Queue() : sizeQI(5) {
+		this->dataQ = new T[5];
 		for (size_t i = 0; i < sizeQI; ++i) {
 			this->dataQ[i] = 0;
 		}
@@ -46,12 +46,12 @@ public:
 	};
 
 	void pushQ(T k) {
-		if ((itPush == itPop && sizeQR == 0) || (itPush != itPop && itPush < (sizeQI - 1))) {
+		if ((itPush == itPop && sizeQR == 0) || (itPush != itPop && itPush < sizeQI)) {
 			dataQ[itPush] = k;
 			++itPush;
 			++sizeQR;
 		}
-		else if (itPush == (sizeQI - 1) && itPop != 0) {
+		else if (itPush == sizeQI && itPop != 0 && sizeQR != sizeQI) {
 			itPush = 0;
 			dataQ[itPush] = k;
 			++itPush;

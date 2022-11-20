@@ -26,7 +26,26 @@ TEST(Queue, can_push_after_resize) {
 	q.pushQ(1);
 	q.pushQ(2);
 	q.pushQ(3);
-	ASSERT_NO_THROW(q.pushQ(4));
+	q.pushQ(4);
+	ASSERT_NO_THROW(q.pushQ(5));
+}
+TEST(Queue, can_push_after_resize_new) {
+	Queue<int> q;
+	q.pushQ(1);
+	q.pushQ(2);
+	q.pushQ(3);
+	q.pushQ(4);
+	q.popQ();
+	q.popQ();
+	q.pushQ(3);
+	q.pushQ(4);
+	q.pushQ(5);
+	q.pushQ(6);
+	q.pushQ(7);
+	q.pushQ(8);
+	q.pushQ(9);
+	q.pushQ(10);
+	ASSERT_NO_THROW(q.pushQ(11));
 }
 TEST(Queue, can_pop_no_empty_queue) {
 	Queue<int> q;
