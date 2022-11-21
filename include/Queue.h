@@ -88,4 +88,8 @@ public:
 		}
 		return dataQ[itPop];
 	};
+
+	T getLast() {
+		return dataQ[itPush - 1];
+	};
 };

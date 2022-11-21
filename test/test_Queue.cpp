@@ -47,6 +47,25 @@ TEST(Queue, can_push_after_resize_new) {
 	q.pushQ(10);
 	ASSERT_NO_THROW(q.pushQ(11));
 }
+TEST(Queue, check_the_last_element) {
+	Queue<int> q;
+	q.pushQ(1);
+	q.pushQ(2);
+	q.pushQ(3);
+	q.pushQ(4);
+	q.popQ();
+	q.popQ();
+	q.pushQ(3);
+	q.pushQ(4);
+	q.pushQ(5);
+	q.pushQ(6);
+	q.pushQ(7);
+	q.pushQ(8);
+	q.pushQ(9);
+	q.pushQ(10);
+	q.pushQ(11);
+	EXPECT_EQ(11, q.getLast());
+}
 TEST(Queue, can_pop_no_empty_queue) {
 	Queue<int> q;
 	q.pushQ(1);
